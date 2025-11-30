@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GlobalCareer AI | Bridge to the World</title>
+    <title>AI500 First Phase</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
@@ -63,6 +63,17 @@
             0% { background-position: 100% 0; }
             100% { background-position: -100% 0; }
         }
+
+        .center-image {
+          padding-left: 250px;
+          padding-right: 250px;
+          padding-top: 20px;
+          padding-bottom: 20px;
+          display: block;    /* so margin auto works */
+          margin: 0 auto;    /* centers horizontally */
+          /* max-width: 100%;   responsive */
+          height: auto;
+        }
     </style>
 </head>
 <body class="font-sans text-slate-800 bg-slate-50 antialiased">
@@ -74,16 +85,17 @@
                 <!-- Service Name (Top Left) -->
                 <div class="flex-shrink-0 flex items-center gap-2">
                     <i data-lucide="globe-2" class="h-8 w-8 text-brand-600"></i>
-                    <span class="font-bold text-xl tracking-tight text-slate-900">GlobalCareer AI</span>
+                    <span class="font-bold text-xl tracking-tight text-slate-900">AI500 First Phase</span>
                 </div>
                 
                 <!-- Desktop Menu -->
                 <div class="hidden md:flex space-x-8">
-                    <a href="#problem" class="text-slate-600 hover:text-brand-600 transition font-medium">The Problem</a>
-                    <a href="#solution" class="text-slate-600 hover:text-brand-600 transition font-medium">Solution</a>
+                    <a href="#problem" class="text-slate-600 hover:text-brand-600 transition font-medium">Muammo</a>
+                    <a href="#solution" class="text-slate-600 hover:text-brand-600 transition font-medium">Yechim</a>
+                    <a href="#team" class="text-slate-600 hover:text-brand-600 transition font-medium">Jamoa</a>
+                    <a href="#why_us" class="text-slate-600 hover:text-brand-600 transition font-medium">Nega Biz?</a>
                     <a href="#architecture" class="text-slate-600 hover:text-brand-600 transition font-medium">Tech</a>
-                    <a href="#team" class="text-slate-600 hover:text-brand-600 transition font-medium">Team</a>
-                    <a href="#roadmap" class="text-slate-600 hover:text-brand-600 transition font-medium">Roadmap</a>
+                    <a href="#roadmap" class="text-slate-600 hover:text-brand-600 transition font-medium">Yo'l xaritasi</a>
                 </div>
 
                 <!-- Mobile Menu Button -->
@@ -97,10 +109,12 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <a href="#problem" class="block px-3 py-2 text-slate-600 hover:text-brand-600">The Problem</a>
-                <a href="#solution" class="block px-3 py-2 text-slate-600 hover:text-brand-600">Solution</a>
-                <a href="#architecture" class="block px-3 py-2 text-slate-600 hover:text-brand-600">Architecture</a>
-                <a href="#team" class="block px-3 py-2 text-slate-600 hover:text-brand-600">Team</a>
+                <a href="#problem" class="block px-3 py-2 text-slate-600 hover:text-brand-600">Muammo</a>
+                <a href="#solution" class="block px-3 py-2 text-slate-600 hover:text-brand-600">Yechim</a>
+                <a href="#team" class="block px-3 py-2 text-slate-600 hover:text-brand-600">Jamoa</a>
+                <a href="#why_us" class="block px-3 py-2 text-slate-600 hover:text-brand-600">Nega Biz?</a>
+                <a href="#architecture" class="block px-3 py-2 text-slate-600 hover:text-brand-600">Tech</a>
+                <a href="#roadmap" class="block px-3 py-2 text-slate-600 hover:text-brand-600">Yo'l xaritasi</a>
             </div>
         </div>
     </nav>
@@ -116,20 +130,20 @@
         <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <div class="fade-in-up">
                 <span class="inline-block py-1 px-3 rounded-full bg-brand-500/20 text-brand-200 text-sm font-semibold mb-6 border border-brand-500/30">
-                    Connecting Uzbekistan to the World
+                    O'zbekistonni Jahon bilan bog'laymiz
                 </span>
                 <h1 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-6">
-                    Unlock Global IT Opportunities with <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-accent-500">AI Intelligence</span>
+                    <span class="bg-clip-text bg-gradient-to-r from-brand-400 to-accent-500">"Artificial Intelligence"</span>  kuchi bilan global IT imkoniyatlarini oching. 
                 </h1>
                 <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-300">
-                    We bridge the gap between talented graduates and the global market. Aggregate vacancies, optimize your CV, and get hired internationally.
+                    Biz iqtidorlarni global bozor bilan bogʻlaymiz. Vakansiyalarni bir joyda jamlang, rezyumeingizni optimallashtiring va xalqaro miqyosda ishga kiring.
                 </p>
                 <div class="mt-10 flex justify-center gap-4">
                     <a href="#solution" class="px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-brand-600 hover:bg-brand-700 md:text-lg transition shadow-lg shadow-brand-500/30">
-                        Explore Solution
+                        Yechimni ko'rish
                     </a>
                     <a href="#team" class="px-8 py-3 border border-slate-600 text-base font-medium rounded-md text-slate-200 hover:bg-slate-800 md:text-lg transition">
-                        Meet the Team
+                        Bizning Jamoa
                     </a>
                 </div>
             </div>
@@ -140,9 +154,9 @@
     <section id="problem" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-base text-brand-600 font-semibold tracking-wide uppercase">The Challenge</h2>
+                <h2 class="text-base text-brand-600 font-semibold tracking-wide uppercase">Muammo</h2>
                 <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-slate-900 sm:text-4xl">
-                    Talent Overflow, Opportunity Bottleneck
+                    Iqtidor ko‘p, imkoniyatlar tor!
                 </p>
             </div>
 
@@ -154,26 +168,23 @@
                             <div class="p-3 bg-red-100 rounded-lg text-red-600 mr-4">
                                 <i data-lucide="alert-triangle" class="w-6 h-6"></i>
                             </div>
-                            <h3 class="text-xl font-bold text-slate-900">The Local Limitation</h3>
+                            <h3 class="text-xl font-bold text-slate-900"></h3>
                         </div>
                         <p class="text-slate-600 mb-6">
-                            In Uzbekistan, talented IT graduates rely heavily on limited platforms like HeadHunter and LinkedIn.
+                            Oʻzbekistonda iqtidorli IT bitiruvchilari asosan HeadHunter va LinkedIn kabi cheklangan platformalarga juda koʻp darajada tayanishadi. Misol uchun:
                         </p>
                         <div class="flex justify-between items-end border-b border-slate-200 pb-4 mb-4">
-                            <span class="text-sm font-medium text-slate-500">Available Local Jobs</span>
-                            <span class="text-2xl font-bold text-slate-800">~100</span>
+                            <span class="text-sm font-medium text-slate-500">Misol qilib olsak ushbu platformalarda umumiy vakansiyalar <span class=" font-bold text-slate-800">100</span> ta bolsa topshirmoqchi bolganlar bitruvchi va iqtidorli yoshlar 
+                            <span class="font-bold text-red-600">1 000</span> tadan ko'p.</span>
+                            
                         </div>
-                        <div class="flex justify-between items-end">
-                            <span class="text-sm font-medium text-slate-500">Qualified Applicants</span>
-                            <span class="text-2xl font-bold text-red-600">~1,000+</span>
-                        </div>
-                        <p class="text-xs text-slate-400 mt-4 italic">High competition for limited visibility.</p>
+                        <p class="text-xs text-slate-400 mt-4 italic">Cheklangan vakansiyalar uchun raqobat juda kuchli.</p>
                     </div>
                 </div>
                 
                 <div class="space-y-6">
                     <p class="text-lg text-slate-600 leading-relaxed">
-                        There is a massive disconnect. Thousands of skilled graduates enter the market, but fight over a small pool of locally advertised vacancies. 
+                        Hozirgi kunda kopchilik iqtidorli yoshlar bitiruvchi  va IT o'qiyotgan yoshlarning soni kop va hammasi ham,  vakansiya e'lon qilinadigan sayitlarni bilmaydi, xususan O'zbekistonda kopchilik yagona platformadan foydalanadi.
                     </p>
                     <p class="text-lg text-slate-600 leading-relaxed">
                         Meanwhile, the global market is starving for talent, but our specialists are invisible to them, and foreign platforms are fragmented and hard to navigate manually.
@@ -181,11 +192,11 @@
                     <ul class="space-y-4 mt-4">
                         <li class="flex items-start">
                             <i data-lucide="x-circle" class="w-6 h-6 text-red-500 mr-2 flex-shrink-0"></i>
-                            <span class="text-slate-700">Limited exposure to international companies.</span>
+                            <span class="text-slate-700">Xalqaro kompaniyalarga chiqish imkoniyatining cheklanganligi.</span>
                         </li>
                         <li class="flex items-start">
                             <i data-lucide="x-circle" class="w-6 h-6 text-red-500 mr-2 flex-shrink-0"></i>
-                            <span class="text-slate-700">Wasted potential of skilled youth.</span>
+                            <span class="text-slate-700">Malakali yoshlarning zoye ketayotgan salohiyati.</span>
                         </li>
                     </ul>
                 </div>
@@ -197,12 +208,12 @@
     <section id="solution" class="py-20 bg-slate-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <h2 class="text-base text-brand-600 font-semibold tracking-wide uppercase">Our Solution</h2>
+                <h2 class="text-base text-brand-600 font-semibold tracking-wide uppercase">Bizning Yechim</h2>
                 <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-slate-900 sm:text-4xl">
-                    AI-Driven Global Integration
+                    Sun’iy intellekt asosidagi global integratsiya
                 </p>
                 <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-500">
-                    We don't just list jobs. We aggregate the world's opportunities and equip you with an AI agent to land them.
+                    Biz shunchaki ishlarni ro‘yxatga olmaymiz. Biz dunyo bo‘yicha imkoniyatlarni agregatsiya qilamiz va ularga erishishingiz uchun sizni AI agenti bilan ta’minlaymiz.
                 </p>
             </div>
 
@@ -212,9 +223,9 @@
                     <div class="w-14 h-14 bg-brand-100 rounded-lg flex items-center justify-center text-brand-600 mb-6">
                         <i data-lucide="globe" class="w-8 h-8"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Global Aggregation</h3>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Global Yondashuv</h3>
                     <p class="text-slate-600">
-                        We scrape and collect IT vacancies from specialized platforms worldwide, not just the local ones. Access the hidden market.
+                        Biz Dunyo boyicha IT vakansiyalar elon qilinadigan ko'plab platformalarni malumotlarini (vakansiyalarini) yi'gamiz.
                     </p>
                 </div>
 
@@ -223,9 +234,10 @@
                     <div class="w-14 h-14 bg-accent-100 rounded-lg flex items-center justify-center text-accent-600 mb-6">
                         <i data-lucide="bot" class="w-8 h-8"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">AI Agent Assistant</h3>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">AI Agents</h3>
                     <p class="text-slate-600">
-                        Our intelligent agent helps match you to the right job, drafts your CV, and writes tailored proposals to increase interview chances.
+                        Bizning ushbu paltformamizga qoshilgan odam AI agent yordamidi o'ziga togri keladigan ish vakansiyalarini  topib beradi va ishga topishirida hamma kerakli narsalarga yordam beradi 
+                        (CV toldirish, proposal yozish kabi)
                     </p>
                 </div>
 
@@ -234,14 +246,178 @@
                     <div class="w-14 h-14 bg-green-100 rounded-lg flex items-center justify-center text-green-600 mb-6">
                         <i data-lucide="trending-up" class="w-8 h-8"></i>
                     </div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-3">Market Expansion</h3>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Bozorning Kengayishi</h3>
                     <p class="text-slate-600">
-                        By placing Uzbek talent in global companies, we boost employment and open the Uzbek market to international recognition.
+                        Bu orqali birinchidan kopchilik ishli bo'ladi va ikkinchidan tashqi mamlakat va kampaniyalar O'zbekistonni taniy boshlaydi bu bizga bozorni ochib beradi.
                     </p>
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- 3. Team Members Section -->
+    <section id="team" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-extrabold text-slate-900">Bizning Jamoa</h2>
+                <!-- <p class="mt-2 text-slate-500">The perfect mix of Data, AI, and Frontend mastery.</p> -->
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-8">
+                <!-- Member 0 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg border border-slate-100 hover:-translate-y-2 transition duration-300">
+                    <div class="h-32 bg-brand-600 flex items-center justify-center">
+                         <i data-lucide="user-round" class="w-16 h-16 text-white opacity-12"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-900">Sherzod Ibragimov</h3>
+                        <p class="text-indigo-500 font-medium mb-4">Project Manager</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">Management</span>
+                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">Analytical skills</span>
+                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">Research</span>
+                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">Business Strategy</span>
+                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">Communication</span>
+                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">Problem-solving</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Member 1 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg border border-slate-100 hover:-translate-y-2 transition duration-300">
+                    <div class="h-32 bg-brand-600 flex items-center justify-center">
+                         <i data-lucide="user-round" class="w-16 h-16 text-white opacity-80"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-900">Islomov Shohrux</h3>
+                        <p class="text-brand-600 font-medium mb-4">Data Engineer</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">SQL</span>
+                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">Python</span>
+                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">Azure (ADF/Synapse)</span>
+                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">Snowflake</span>
+                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">Fabric</span>
+                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">AWS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Member 2 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg border border-slate-100 hover:-translate-y-2 transition duration-300">
+                    <div class="h-32 bg-indigo-600 flex items-center justify-center">
+                        <i data-lucide="user-round" class="w-16 h-16 text-white opacity-80"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-l font-bold text-slate-900">Husanboy Mansuraliyev</h3>
+                        <p class="text-indigo-600 font-medium mb-4">Backend Developer</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">React</span>
+                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">Python</span>
+                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">Javascript</span>
+                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">Python</span>
+                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">C++</span>
+                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">Power BI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Member 3-->
+                     <div class="bg-white rounded-xl overflow-hidden shadow-lg border border-slate-100 hover:-translate-y-2 transition duration-300">
+                    <div class="h-32 bg-indigo-600 flex items-center justify-center">
+                        <i data-lucide="user-round" class="w-16 h-16 text-white opacity-80"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-900">Mardon Hazratov</h3>
+                        <p class="text-accent-600 font-medium mb-4">AI Developer</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">Python</span>
+                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">AI Modeling</span>
+                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">NLP</span>
+                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">Langgraph</span>
+                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">SQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. Why Our Team Section -->
+    <section id="why_us" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:flex lg:items-center lg:gap-16">
+                <div class="lg:w-1/2 mb-10 lg:mb-0">
+                    <h2 class="text-3xl font-extrabold text-slate-900 mb-6">Nima uchun bizning jamoa bu muammoni hal qila oladi?</h2>
+                    <div class="bg-brand-50 border-l-4 border-brand-500 p-6 rounded-r-lg mb-6">
+                        <p class="text-slate-700 italic">
+                          "Dunyo bo‘yicha eng ko‘p e’lon qilinadigan IT vakansiyalarni scraping qilib yig‘ib, ulardan dashboard tayyorlaganmiz. Bu loyiha orqali biz: global job marketdagi eng talab qilinadigan ko‘nikmalar; eng ko‘p ishlatiladigan tool va texnologiyalar; dunyo kompaniyalari qaysi darajadagi mutaxassislarni qidirmoqda, qaysi yo‘nalishlar bo‘yicha O‘zbekistonda kadr yetishmayotganini aniq statistikalar bilan ko‘rsatdik. Bu analitika keyinchalik ta’lim tashkilotlari, bootcamplar va markazlar uchun o‘quv dasturlarni to‘g‘ri yo‘naltirish uchun ishlatilgan.  Shu sababdan ham bu projectni  hal qila olamiz."
+                        </p>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex items-center">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mr-3"></i>
+                            <span class="text-slate-700">Isbotlangan global ma’lumotlar tahlili tajribasi</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mr-3"></i>
+                            <span class="text-slate-700">O‘quv dasturlarini yo‘naltirish uchun muassasalar tomonidan qo‘llaniladi</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mr-3"></i>
+                            <span class="text-slate-700">LLMlar, RAG va pipeline-lar bo‘yicha chuqur ekspertlik</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="lg:w-1/2">
+                    <div class="bg-gradient-to-tr from-slate-100 to-slate-200 rounded-2xl p-8 shadow-inner">
+                        <div class="space-y-6">
+                            <!-- Experience Badge 1 -->
+                            <div class="flex items-start">
+                                <div class="bg-white p-3 rounded shadow-sm mr-4">
+                                    <i data-lucide="user-cog" class="w-6 h-6 text-black opacity-12"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900">Project Manager</h4>
+                                    <p class="text-sm text-slate-600">20 yildan oshiq kuchli business bilim, tajriba, boshqaruv va business strategiyalarga ega Leader va Founder.</p>
+                                </div>
+                            </div>
+                            <!-- Experience Badge 1 -->
+                            <div class="flex items-start">
+                                <div class="bg-white p-3 rounded shadow-sm mr-4">
+                                    <i data-lucide="database-zap" class="w-6 h-6 text-brand-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900">Senior Data Engineer</h4>
+                                    <p class="text-sm text-slate-600">Global loyihalarda ETL, data pipelines, AI integrations, data modellashtirish, scraping va avtomatlashtirish bo‘yicha 5+ yillik tajriba.</p>
+                                </div>
+                            </div>
+                            <!-- Experience Badge 2 -->
+                            <div class="flex items-start">
+                                <div class="bg-white p-3 rounded shadow-sm mr-4">
+                                    <i data-lucide="brain-circuit" class="w-6 h-6 text-accent-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900">AI Developer</h4>
+                                    <p class="text-sm text-slate-600">LLM-agentlar, LangChain/LangGraph, RAG, automation va distributed sistemalarda ishlagan kuchli mutaxassis va background sifatida Data Engineeringni ham biladi.</p>
+                                </div>
+                            </div>
+                            <!-- Experience Badge 3 -->
+                            <div class="flex items-start">
+                                <div class="bg-white p-3 rounded shadow-sm mr-4">
+                                    <i data-lucide="code-2" class="w-6 h-6 text-indigo-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900">Web Developer</h4>
+                                    <p class="text-sm text-slate-600">Web developer sifatida ishlab boshlagan, va MAAB Innovation kampaniyamizda AI jamoamizga qo'shilib ishlab kelayotgan kuchli mutaxasis.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <!-- 6. System Architecture (Moved up for flow) -->
     <section id="architecture" class="py-20 bg-slate-900 text-white overflow-hidden">
@@ -320,175 +496,150 @@
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- 4. Why Our Team Section -->
-    <section class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="lg:flex lg:items-center lg:gap-16">
-                <div class="lg:w-1/2 mb-10 lg:mb-0">
-                    <h2 class="text-3xl font-extrabold text-slate-900 mb-6">Why We Can Solve This</h2>
-                    <p class="text-lg text-slate-600 mb-6">
-                        We aren't just theorists. We are the team behind the <strong>MAAB Innovation campaign</strong>.
-                    </p>
-                    <div class="bg-brand-50 border-l-4 border-brand-500 p-6 rounded-r-lg mb-6">
-                        <p class="text-slate-700 italic">
-                            "We scraped global IT vacancies, built a dashboard, and revealed the exact skills the world demands versus what Uzbekistan lacks. We have the data, and we have the history."
-                        </p>
-                    </div>
-                    <ul class="space-y-4">
-                        <li class="flex items-center">
-                            <i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mr-3"></i>
-                            <span class="text-slate-700">Proven track record in Global Data Analysis</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mr-3"></i>
-                            <span class="text-slate-700">Used by institutions to guide training programs</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mr-3"></i>
-                            <span class="text-slate-700">Deep expertise in LLMs, RAG, and Pipelines</span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="lg:w-1/2">
-                    <div class="bg-gradient-to-tr from-slate-100 to-slate-200 rounded-2xl p-8 shadow-inner">
-                        <div class="space-y-6">
-                            <!-- Experience Badge 1 -->
-                            <div class="flex items-start">
-                                <div class="bg-white p-3 rounded shadow-sm mr-4">
-                                    <i data-lucide="database-zap" class="w-6 h-6 text-brand-600"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-slate-900">Senior Data Engineer</h4>
-                                    <p class="text-sm text-slate-600">5+ years in ETL, Pipelines, Automation & Modeling in global projects.</p>
-                                </div>
-                            </div>
-                            <!-- Experience Badge 2 -->
-                            <div class="flex items-start">
-                                <div class="bg-white p-3 rounded shadow-sm mr-4">
-                                    <i data-lucide="brain-circuit" class="w-6 h-6 text-accent-600"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-slate-900">AI Specialist</h4>
-                                    <p class="text-sm text-slate-600">Expert in Agents, LangChain, RAG, and Distributed Systems.</p>
-                                </div>
-                            </div>
-                            <!-- Experience Badge 3 -->
-                            <div class="flex items-start">
-                                <div class="bg-white p-3 rounded shadow-sm mr-4">
-                                    <i data-lucide="code-2" class="w-6 h-6 text-indigo-600"></i>
-                                </div>
-                                <div>
-                                    <h4 class="font-bold text-slate-900">The "Strong Mutant" Web Dev</h4>
-                                    <p class="text-sm text-slate-600">A hybrid developer bridging complex web systems with our AI backend.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="hero">
+          <img src="data_engineering.png" alt="Data Architecture" class="center-image">
         </div>
     </section>
 
-    <!-- 3. Team Members Section -->
-    <section id="team" class="py-20 bg-slate-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl font-extrabold text-slate-900">Meet The Squad</h2>
-                <p class="mt-2 text-slate-500">The perfect mix of Data, AI, and Frontend mastery.</p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Member 1 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-lg border border-slate-100 hover:-translate-y-2 transition duration-300">
-                    <div class="h-32 bg-brand-600 flex items-center justify-center">
-                         <i data-lucide="hard-drive" class="w-16 h-16 text-white opacity-80"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-slate-900">Team Member 1</h3>
-                        <p class="text-brand-600 font-medium mb-4">Data Engineer</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">SQL</span>
-                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">Python</span>
-                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">Azure (ADF/Synapse)</span>
-                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">Snowflake</span>
-                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">Fabric</span>
-                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">AWS</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Member 2 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-lg border border-slate-100 hover:-translate-y-2 transition duration-300">
-                    <div class="h-32 bg-indigo-600 flex items-center justify-center">
-                        <i data-lucide="monitor" class="w-16 h-16 text-white opacity-80"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-slate-900">Team Member 2</h3>
-                        <p class="text-indigo-600 font-medium mb-4">Frontend Developer</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">React</span>
-                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">Typescript</span>
-                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">Javascript</span>
-                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">Python</span>
-                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">C++</span>
-                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">Power BI</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Member 3 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-lg border border-slate-100 hover:-translate-y-2 transition duration-300">
-                    <div class="h-32 bg-accent-600 flex items-center justify-center">
-                        <i data-lucide="cpu" class="w-16 h-16 text-white opacity-80"></i>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-bold text-slate-900">Team Member 3</h3>
-                        <p class="text-accent-600 font-medium mb-4">Backend & AI</p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">Python</span>
-                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">AI Modeling</span>
-                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">NLP</span>
-                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">Langgraph</span>
-                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">SQL</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+    
+    
 
     <!-- 5. Roadmap Section -->
-    <section id="roadmap" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-3xl font-extrabold text-slate-900 mb-10">Project Roadmap</h2>
-            
-            <!-- Roadmap Placeholder -->
-            <div class="w-full max-w-4xl mx-auto border-2 border-dashed border-slate-300 rounded-2xl bg-slate-50 min-h-[400px] flex flex-col items-center justify-center p-10">
-                
-                <!-- IF YOU HAVE AN IMAGE, REPLACE THIS SVG/DIV WITH: <img src="your-roadmap-image.png" class="w-full h-auto rounded-lg" alt="Roadmap"> -->
-                
-                <i data-lucide="map" class="w-20 h-20 text-slate-300 mb-4"></i>
-                <h3 class="text-xl font-semibold text-slate-600">Roadmap Image Placement</h3>
-                <p class="text-slate-500 mt-2">Place your detailed project roadmap image here.</p>
-                <div class="mt-8 flex gap-4 text-left max-w-lg mx-auto">
-                    <div class="flex-1 p-4 bg-white rounded shadow-sm">
-                        <span class="block text-brand-600 font-bold text-xs uppercase tracking-wide">Phase 1</span>
-                        <span class="font-medium text-slate-800">Scraping & Data Warehouse</span>
-                    </div>
-                    <div class="flex-1 p-4 bg-white rounded shadow-sm">
-                        <span class="block text-brand-600 font-bold text-xs uppercase tracking-wide">Phase 2</span>
-                        <span class="font-medium text-slate-800">AI Agent Development</span>
-                    </div>
-                    <div class="flex-1 p-4 bg-white rounded shadow-sm">
-                        <span class="block text-brand-600 font-bold text-xs uppercase tracking-wide">Phase 3</span>
-                        <span class="font-medium text-slate-800">Platform Launch</span>
-                    </div>
-                </div>
+<section id="roadmap" class="py-20 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <h2 class="text-3xl font-extrabold text-slate-900 mb-4">Proyekt Yo'l xaritasi</h2>
+    <p class="text-slate-500 max-w-2xl mx-auto mb-10">
+      Platforma 4 ta asosiy bosqich orqali quriladi: ma’lumotlarni yig‘ish, AI agent va matching,
+      avtomatik apply qilish va to‘liq web platforma + analitika.
+    </p>
+
+    <!-- Roadmap Card -->
+    <div class="w-full max-w-5xl mx-auto rounded-3xl border border-indigo-100 bg-gradient-to-br from-indigo-50 via-sky-50 to-emerald-50 p-8 lg:p-12 shadow-lg">
+
+      <!-- Timeline / Steps -->
+      <div class="mt-2 space-y-8 text-left">
+
+        <!-- Bosqich 1 -->
+        <div class="relative rounded-2xl bg-white/80 p-6 shadow-sm ring-1 ring-indigo-100">
+          <span class="inline-flex items-center rounded-full bg-indigo-100 px-3 py-1 text-xs font-semibold text-indigo-700 mb-3">
+            1-bosqich • Ma’lumotlarni yig‘ish va saqlash
+          </span>
+          <div class="grid gap-4 md:grid-cols-2">
+            <div>
+              <h4 class="text-sm font-semibold text-slate-800 mb-2">Qadamlar</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm text-slate-700">
+                <li>Turli ish platformalaridan API va web-scraping orqali vakansiyalarni yig‘ish.</li>
+                <li>Bronze → Silver → Gold Medallion arxitekturasi bo‘yicha Data Warehouse’ga joylash.</li>
+                <li>Vakansiyalarni tozalash, takrorlarni olib tashlash va yagona job modeli (1 row = 1 vakansiya) ga keltirish.</li>
+              </ul>
             </div>
+            <div>
+              <h4 class="text-sm font-semibold text-slate-800 mb-2">Texnologiyalar</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm text-slate-700">
+                <li>Python (scraping, ETL)</li>
+                <li>SQL Server – Data Warehouse (Bronze/Silver/Gold)</li>
+                <li>PostgreSQL – AI agent ishlaydigan operational baza (Backend)</li>
+              </ul>
+            </div>
+          </div>
         </div>
-    </section>
+
+        <!-- Bosqich 2 -->
+        <div class="relative rounded-2xl bg-white/80 p-6 shadow-sm ring-1 ring-sky-100">
+          <span class="inline-flex items-center rounded-full bg-sky-100 px-3 py-1 text-xs font-semibold text-sky-700 mb-3">
+            2-bosqich • AI Agent va Matching logikasi
+          </span>
+          <div class="grid gap-4 md:grid-cols-2">
+            <div>
+              <h4 class="text-sm font-semibold text-slate-800 mb-2">Qadamlar</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm text-slate-700">
+                <li>Foydalanuvchi CV’si yoki savollari orqali Profile Analyzer yordamida profil tahlili.</li>
+                <li>Data Warehouse’dan tayyorlangan ma’lumotlarni PostgreSQL ga sync qilish.</li>
+                <li>AI Matching Agent orqali eng mos vakansiyalarni topish, scoring va rank qilish.</li>
+                <li>Har bir vakansiya uchun CV’ni moslashtirish va individual cover letter/proposal generatsiya qilish.</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="text-sm font-semibold text-slate-800 mb-2">Texnologiyalar va AI vositalari</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm text-slate-700">
+                <li>Python, SQL</li>
+                <li>LangChain + LangGraph – AI agent orkestratsiyasi</li>
+                <li>LLM (OpenAI yoki open-source model) – CV tahlili, resume tailoring, cover letter yozish</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bosqich 3 -->
+        <div class="relative rounded-2xl bg-white/80 p-6 shadow-sm ring-1 ring-emerald-100">
+          <span class="inline-flex items-center rounded-full bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700 mb-3">
+            3-bosqich • Avtomatik apply va integratsiyalar
+          </span>
+          <div class="grid gap-4 md:grid-cols-2">
+            <div>
+              <h4 class="text-sm font-semibold text-slate-800 mb-2">Qadamlar</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm text-slate-700">
+                <li>Tanlangan vakansiyalar uchun apply jarayonini avtomatlashtirish:</li>
+                <li>API bo‘lsa – to‘g‘ridan-to‘g‘ri API orqali apply.</li>
+                <li>API bo‘lmasa – Playwright/Selenium orqali formalarni to‘ldirish.</li>
+                <li>Email bo‘lsa – tayyor CV + cover letter bilan xat yuborish.</li>
+                <li>Apply qilib bo‘lmaydigan holatlarda, vakansiya direct linki bilan userga beriladi.</li>
+                <li>Har bir ariza holatini (applied, interview, rejected, …) log qilish va bildirishnoma yuborish.</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="text-sm font-semibold text-slate-800 mb-2">Texnologiyalar</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm text-slate-700">
+                <li>FastAPI / Django – backend servislar</li>
+                <li>Playwright / Selenium – job board formalarini to‘ldirish</li>
+                <li>Email (SMTP) – notificationlar</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bosqich 4 -->
+        <div class="relative rounded-2xl bg-white/80 p-6 shadow-sm ring-1 ring-indigo-100">
+          <span class="inline-flex items-center rounded-full bg-indigo-100 px-3 py-1 text-xs font-semibold text-indigo-700 mb-3">
+            4-bosqich • Web platforma va analitika
+          </span>
+          <div class="grid gap-4 md:grid-cols-2">
+            <div>
+              <h4 class="text-sm font-semibold text-slate-800 mb-2">Qadamlar</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm text-slate-700">
+                <li>Foydalanuvchi kabineti: profil, mos vakansiyalar, apply statuslari, AI tavsiyalari.</li>
+                <li>Dashboardlar: skill’lar bo‘yicha talab, kompaniyalar va tool’lar statistikasi (career navigation panel).</li>
+                <li>Dashboard’larni embed qilish va kerakli analitikani ko‘rsatish.</li>
+                <li>Foydalanuvchi feedback’lari va statistikalar asosida matching modelini doimiy yaxshilash.</li>
+              </ul>
+            </div>
+            <div>
+              <h4 class="text-sm font-semibold text-slate-800 mb-2">Texnologiyalar</h4>
+              <ul class="list-disc pl-5 space-y-1 text-sm text-slate-700">
+                <li>Frontend: HTML, CSS, JavaScript, React</li>
+                <li>Backend API: FastAPI / Django</li>
+                <li>BI / Dashboard: Power BI (embed qilingan dashboardlar)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Natija blok -->
+      <div class="mt-10 rounded-2xl border border-dashed border-indigo-300 bg-white/70 px-6 py-5 text-left">
+        <h4 class="text-sm font-semibold text-slate-900 mb-2">Natija</h4>
+        <p class="text-sm text-slate-700">
+          Bir tomonda — kuchli data warehouse + analitika orqali qaysi skill va tool’ga talab oshayotganini ko‘rsatamiz.
+          Ikkinchi tomonda — AI agent foydalanuvchi uchun mos ishlarni topib, CV va cover letterni tayyorlab,
+          imkon qadar avtomatik tarzda apply qilib beradi. Ustunligi: bu jarayon dunyo bo‘ylab vakansiyalar uchun ishlaydi.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 
     <!-- Footer -->
     <footer class="bg-slate-900 text-slate-300 py-12">
@@ -497,18 +648,18 @@
                 <div class="mb-4 md:mb-0">
                     <div class="flex items-center gap-2">
                         <i data-lucide="globe-2" class="h-6 w-6 text-brand-500"></i>
-                        <span class="font-bold text-lg text-white">GlobalCareer AI</span>
+                        <span class="font-bold text-lg text-white">AI500 First Phase</span>
                     </div>
                     <p class="text-sm mt-2 text-slate-400">Opening borders for Uzbek Talent.</p>
                 </div>
                 <div class="flex space-x-6">
-                    <a href="#" class="hover:text-white transition"><i data-lucide="github" class="w-5 h-5"></i></a>
+                    <!-- <a href="#" class="hover:text-white transition"><i data-lucide="github" class="w-5 h-5"></i></a>
                     <a href="#" class="hover:text-white transition"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
-                    <a href="#" class="hover:text-white transition"><i data-lucide="mail" class="w-5 h-5"></i></a>
+                    <a href="#" class="hover:text-white transition"><i data-lucide="mail" class="w-5 h-5"></i></a> -->
                 </div>
             </div>
             <div class="border-t border-slate-800 mt-8 pt-8 text-center text-sm text-slate-500">
-                &copy; 2025 Global Career AI. All rights reserved.
+                &copy; 2025 AI500 First Phase.
             </div>
         </div>
     </footer>
