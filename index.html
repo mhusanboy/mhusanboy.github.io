@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HireHub – AI‑powered IT job platform</title>
+  <style>
+    /* Root variables for colours and sizes */
+    :root {
+      /* Updated colour palette */
+      --bg: #0f0a24;
+      --bg-gradient-start: #311b92; /* deep purple */
+      --bg-gradient-end: #09011a;   /* very dark purple */
+      --primary: #8b5cf6;           /* vibrant purple accent */
+      --secondary: #ec4899;         /* complementary pink accent */
+      --accent-soft: rgba(99, 102, 241, 0.12);
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --border: rgba(148, 163, 184, 0.35);
+      --radius-lg: 18px;
+      --radius-xl: 24px;
+      --max-width: 1100px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: radial-gradient(circle at top left, var(--bg-gradient-start), var(--bg-gradient-end));
+      color: var(--text);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Layout utilities */
+    .container {
+      width: 100%;
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    section {
+      padding: 4rem 0;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(16px);
+      background: rgba(3, 7, 18, 0.8);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 0;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .logo-mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.5);
+    }
+
+    .nav-links {
+      display: none;
+      gap: 1.5rem;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+    }
+
+    .nav-links a {
+      position: relative;
+      padding-bottom: 0.2rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      transition: width 0.2s ease-out;
+      border-radius: 999px;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      display: none;
+    }
+
+    @media (min-width: 768px) {
+      .nav-links {
+        display: flex;
+      }
+      .nav-cta {
+        display: inline-flex;
+      }
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.5rem 1.2rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border: 1px solid transparent;
+      background: var(--primary);
+      color: #f8fafc;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 32px rgba(99, 102, 241, 0.55);
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      background: rgba(78, 70, 229, 0.1);
+    }
+
+    /* Hero section */
+    #hero {
+      padding-top: 5rem;
+    }
+
+    .hero-grid {
+      display: grid;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    @media (min-width: 920px) {
+      .hero-grid {
+        grid-template-columns: 1.1fr 1fr;
+      }
+    }
+
+    .hero-title {
+      font-size: 2.4rem;
+      line-height: 1.2;
+      margin: 0 0 0.8rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-title span {
+      background: linear-gradient(120deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-subtitle {
+      max-width: 34rem;
+      font-size: 1rem;
+      color: var(--text-muted);
+    }
+
+    .metrics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.4rem;
+      font-size: 0.85rem;
+    }
+
+    .metric-pill {
+      padding: 0.45rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(99, 102, 241, 0.15);
+      color: var(--text-muted);
+    }
+
+    .metric-pill strong {
+      color: var(--text);
+    }
+
+    .hero-image {
+      border-radius: var(--radius-xl);
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid var(--border);
+      box-shadow: 0 18px 40px rgba(2, 6, 23, 0.8);
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      position: relative;
+    }
+
+    .hero-image::after {
+      content: "";
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      top: -50px;
+      right: -50px;
+      background: radial-gradient(circle at 30% 30%, var(--secondary), transparent);
+      opacity: 0.4;
+      filter: blur(4px);
+    }
+
+    /* Section headings */
+    .section-kicker {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .section-heading {
+      font-size: 1.7rem;
+      margin-bottom: 0.8rem;
+      letter-spacing: -0.03em;
+    }
+
+    .section-lead {
+      max-width: 32rem;
+      font-size: 0.96rem;
+      color: var(--text-muted);
+    }
+
+    /* Problem & Solution cards */
+    .card-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 860px) {
+      .card-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .card {
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.2rem 1.3rem;
+      box-shadow: 0 10px 28px rgba(2, 6, 23, 0.6);
+      position: relative;
+    }
+
+    .card h3 {
+      margin: 0 0 0.4rem;
+      font-size: 1.05rem;
+    }
+
+    .card p {
+      margin: 0 0 0.6rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .card .metric {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--text-muted);
+    }
+
+    /* Icon inside cards */
+    .card-icon {
+      font-size: 1.6rem;
+      width: 2.3rem;
+      height: 2.3rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: #f8fafc;
+      margin-bottom: 0.8rem;
+      box-shadow: 0 6px 18px rgba(79, 70, 229, 0.4);
+    }
+
+    /* Team section */
+    .team-grid {
+      display: grid;
+      gap: 1.2rem;
+      margin-top: 1.4rem;
+    }
+
+    @media (min-width: 900px) {
+      .team-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+    }
+
+    .team-card {
+      padding: 1rem;
+      background: rgba(15, 23, 42, 0.92);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+    }
+
+    .team-role {
+      color: var(--text-muted);
+      font-size: 0.82rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.3rem;
+      font-size: 0.74rem;
+      color: var(--text-muted);
+    }
+
+    .skills span {
+      padding: 0.2rem 0.5rem;
+      border-radius: 999px;
+      background: rgba(99, 102, 241, 0.18);
+      border: 1px solid rgba(99, 102, 241, 0.35);
+    }
+
+    /* Why us section */
+    #why {
+      background: linear-gradient(180deg, rgba(20, 31, 55, 0.95), rgba(12, 19, 36, 0.95));
+    }
+
+    .why-content {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 860px) {
+      .why-content {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .why-text {
+      font-size: 0.94rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .why-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .why-list li {
+      padding-left: 2rem;
+      position: relative;
+      margin-bottom: 1rem;
+      font-size: 0.88rem;
+      color: var(--text);
+    }
+
+    .why-list li::before {
+      content: "✔";
+      position: absolute;
+      left: 0;
+      top: 0;
+      color: var(--primary);
+      font-weight: bold;
+    }
+
+    /* Roadmap section */
+    #roadmap-section {
+      background: rgba(12, 19, 36, 0.95);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .roadmap-img {
+      margin-top: 1.5rem;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    /* Architecture section */
+    #architecture {
+      background: rgba(15, 23, 42, 0.9);
+      border-top: 1px solid var(--border);
+    }
+
+    .architecture-flow {
+      margin-top: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1.2rem;
+      font-size: 0.95rem;
+    }
+
+    @media (min-width: 700px) {
+      .architecture-flow {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+
+    .flow-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .flow-box {
+      padding: 0.6rem 0.9rem;
+      border-radius: 12px;
+      background: rgba(30, 41, 59, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+
+    .flow-arrow {
+      font-size: 1.4rem;
+      color: var(--primary);
+    }
+
+    /* Footer */
+    footer {
+      padding: 2rem 0 3rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-align: center;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header>
+    <div class="container nav">
+      <a href="#hero" class="logo">
+        <div class="logo-mark"></div>
+        HireHub
+      </a>
+      <nav class="nav-links">
+        <a href="#problem">Problem</a>
+        <a href="#solution">Solution</a>
+        <a href="#team">Team</a>
+        <a href="#why">Why us</a>
+        <a href="#roadmap-section">Roadmap</a>
+        <a href="#architecture">Architecture</a>
+      </nav>
+      <a href="#cta" class="btn nav-cta">Join waitlist</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="hero">
+      <div class="container hero-grid">
+        <div>
+          <h1 class="hero-title">
+            Unlock your IT career<br>
+            with <span>AI‑powered matching</span>
+          </h1>
+          <p class="hero-subtitle">
+            HireHub connects talented graduates and developers to the right
+            opportunities by scanning thousands of job platforms around the world.
+          </p>
+          <div class="metrics">
+            <span class="metric-pill"><strong>10+</strong> sources aggregated</span>
+            <span class="metric-pill"><strong>AI agent</strong> guided</span>
+            <span class="metric-pill"><strong>&lt;5 min</strong> to find a match</span>
+          </div>
+          <div class="metrics" style="margin-top:1.2rem;">
+            <a href="#cta" class="btn">Get early access</a>
+            <a href="#problem" class="btn btn-outline">Learn more</a>
+          </div>
+        </div>
+        <div>
+          <div class="hero-image">
+            <h3 style="margin:0; font-size:1rem; color:var(--text-muted);">Sample insight</h3>
+            <p style="margin:0; font-size:1.3rem; font-weight:600;">Top skill demand: Python, SQL, React</p>
+            <p style="margin:0; font-size:0.85rem; color:var(--text-muted);">Data based on 100k jobs scraped worldwide</p>
+            <div style="display:flex; gap:0.6rem; margin-top:0.8rem; flex-wrap:wrap;">
+              <div style="flex:1 1 45%; background:rgba(30, 41, 59, 0.9); border:1px solid var(--border); border-radius:12px; padding:0.6rem;">
+                <div style="font-size:0.75rem; color:var(--text-muted);">Most wanted role</div>
+                <div style="font-size:0.95rem; font-weight:500;">Full‑stack developer</div>
+              </div>
+              <div style="flex:1 1 45%; background:rgba(30, 41, 59, 0.9); border:1px solid var(--border); border-radius:12px; padding:0.6rem;">
+                <div style="font-size:0.75rem; color:var(--text-muted);">Avg. salary increase</div>
+                <div style="font-size:0.95rem; font-weight:500;">+20%</div>
+              </div>
+            </div>
+            <p style="margin:0; font-size:0.7rem; margin-top:0.7rem; color:var(--text-muted);">AI insights updated daily</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section id="problem">
+      <div class="container">
+        <div class="section-kicker">The problem</div>
+        <h2 class="section-heading">Untapped talent meets limited exposure</h2>
+        <p class="section-lead">
+          Thousands of brilliant graduates and junior developers are ready to
+          contribute, but many don’t know where to look. In markets like
+          Uzbekistan, most candidates rely on a single platform, leaving
+          countless opportunities undiscovered while competition soars for
+          the few visible listings.
+        </p>
+        <div class="card-grid" style="margin-top:1.6rem;">
+          <!-- Overloaded boards -->
+          <div class="card">
+            <div class="card-icon">📥</div>
+            <h3>Overloaded boards</h3>
+            <p>
+              Popular job boards are swamped — a handful of roles attract
+              thousands of applicants, making it hard for both candidates and
+              employers to stand out.
+            </p>
+            <div class="metric">10× candidates per listing</div>
+          </div>
+          <!-- Hidden opportunities -->
+          <div class="card">
+            <div class="card-icon">🔎</div>
+            <h3>Hidden opportunities</h3>
+            <p>
+              Many valuable vacancies are posted on niche or regional sites
+              unknown to most job seekers. Without the right tools they remain
+              invisible.
+            </p>
+            <div class="metric">Missed global postings</div>
+          </div>
+          <!-- Scattered sources -->
+          <div class="card">
+            <div class="card-icon">🌐</div>
+            <h3>Scattered sources</h3>
+            <p>
+              With hundreds of job boards, company pages and community forums,
+              sifting through everything manually becomes overwhelming and
+              inefficient.
+            </p>
+            <div class="metric">100+ sites to comb</div>
+          </div>
+          <!-- Skills mismatch -->
+          <div class="card">
+            <div class="card-icon">⚠️</div>
+            <h3>Skills mismatch</h3>
+            <p>
+              Generic CVs and proposals often don’t align with what global
+              employers expect, leading to low interview rates despite strong
+              potential.
+            </p>
+            <div class="metric">Low interview conversion</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solution">
+      <div class="container">
+        <div class="section-kicker">Our solution</div>
+        <h2 class="section-heading">A single AI‑powered gateway to global IT jobs</h2>
+        <p class="section-lead">
+          HireHub crawls and aggregates vacancies from job boards, company
+          websites and freelance platforms around the world. Our AI agent
+          matches your skills, writes tailored CVs and proposals, and guides you
+          through the entire application process.
+        </p>
+        <div class="card-grid" style="margin-top:1.6rem;">
+          <!-- Omni‑source aggregator -->
+          <div class="card">
+            <div class="card-icon">🌍</div>
+            <h3>Omni‑source aggregator</h3>
+            <p>
+              Hundreds of job boards, company career pages and freelance
+              platforms are unified into one curated feed, so you never miss a
+              potential opportunity.
+            </p>
+            <div class="metric">Global coverage</div>
+          </div>
+          <!-- AI matching engine -->
+          <div class="card">
+            <div class="card-icon">🤖</div>
+            <h3>AI matching engine</h3>
+            <p>
+              Sophisticated models analyse your profile and instantly surface
+              roles that align with your skills, experience and aspirations.
+            </p>
+            <div class="metric">Personalised matches</div>
+          </div>
+          <!-- Application assistant -->
+          <div class="card">
+            <div class="card-icon">✍️</div>
+            <h3>Application assistant</h3>
+            <p>
+              Our agent helps craft compelling CVs and cover letters
+              tailored to each job, ensuring your application stands out.
+            </p>
+            <div class="metric">Polished applications</div>
+          </div>
+          <!-- Global bridge -->
+          <div class="card">
+            <div class="card-icon">🚀</div>
+            <h3>Global bridge</h3>
+            <p>
+              By connecting Uzbek professionals with employers worldwide, we
+              shine a light on regional talent and open up new markets.
+            </p>
+            <div class="metric">Uzbek talent recognized</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team">
+      <div class="container">
+        <div class="section-kicker">Team</div>
+        <h2 class="section-heading">Meet the builders</h2>
+        <p class="section-lead">
+          Our diverse team combines data, AI and web expertise to create a
+          seamless job‑matching platform.
+        </p>
+        <div class="team-grid">
+          <div class="team-card">
+            <h3>Data Engineer</h3>
+            <div class="team-role">Data pipelines & warehousing</div>
+            <p style="font-size:0.85rem; color:var(--text-muted);">
+              5+ years creating scalable ETL processes, scraping, automation,
+              and integrating AI with global datasets.
+            </p>
+            <div class="skills">
+              <span>SQL</span>
+              <span>Python</span>
+              <span>Snowflake</span>
+              <span>Azure</span>
+              <span>Power BI</span>
+            </div>
+          </div>
+          <div class="team-card">
+            <h3>Frontend Developer</h3>
+            <div class="team-role">Web & UX</div>
+            <p style="font-size:0.85rem; color:var(--text-muted);">
+              Crafts intuitive interfaces that make complex workflows feel
+              effortless for job seekers.
+            </p>
+            <div class="skills">
+              <span>JavaScript</span>
+              <span>React</span>
+              <span>TypeScript</span>
+              <span>Python</span>
+              <span>SQL</span>
+            </div>
+          </div>
+          <div class="team-card">
+            <h3>Backend Developer</h3>
+            <div class="team-role">AI & ML</div>
+            <p style="font-size:0.85rem; color:var(--text-muted);">
+              Implements robust AI models, language agents and APIs that power
+              our intelligent matching.
+            </p>
+            <div class="skills">
+              <span>Python</span>
+              <span>SQL</span>
+              <span>NLP</span>
+              <span>AI modeling</span>
+              <span>LangGraph</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why us Section -->
+    <section id="why">
+      <div class="container">
+        <div class="section-kicker">Why us</div>
+        <h2 class="section-heading">Why our team can solve this</h2>
+        <div class="why-content">
+          <div class="why-text">
+            <p>
+              We’ve already built pipelines to scrape and analyse thousands of
+              vacancies worldwide and turned them into actionable insights. Our
+              past project produced a dashboard showing the most demanded
+              skills, tools, salary ranges and gaps in Uzbekistan’s IT
+              ecosystem. Educational institutions are using our analytics to
+              guide curriculum planning. This isn’t theory — it’s a continuation
+              of what we’ve proven.
+            </p>
+            <p>
+              Our Senior Data Engineer has over five years’ experience
+              designing ETL systems, AI integrations and automation for
+              globally distributed projects. Our AI Developer brings deep
+              expertise in LLM agents, retrieval‑augmented generation and
+              distributed systems, with a strong data engineering foundation.
+              Our Web Developer started in web, expanded into AI, and now
+              bridges the gap between UI and algorithmic complexity.
+            </p>
+          </div>
+          <ul class="why-list">
+            <li>Deep data & scraping know‑how</li>
+            <li>Proven AI and LLM expertise</li>
+            <li>Hands‑on with global job market analytics</li>
+            <li>Full‑stack web experience</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Roadmap Section -->
+    <section id="roadmap-section">
+      <div class="container">
+        <div class="section-kicker">Roadmap</div>
+        <h2 class="section-heading">Where we’re headed</h2>
+        <p class="section-lead">
+          From prototype to scalable platform — here’s a high‑level view of our
+          journey. The detailed roadmap graphic prepared by our team will be
+          placed here.
+        </p>
+        <div class="roadmap-img">
+          <!-- Placeholder image for roadmap -->
+          <img src="roadmap.png" alt="Roadmap graphic placeholder" style="width:100%; height:auto;">
+        </div>
+      </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section id="architecture">
+      <div class="container">
+        <div class="section-kicker">System architecture</div>
+        <h2 class="section-heading">Technologies used</h2>
+        <p class="section-lead">
+          A modern stack orchestrates scraping, storage, AI and the user
+          experience. We’ve simplified the flow below.
+        </p>
+        <div class="architecture-flow">
+          <div class="flow-item">
+            <div class="flow-box">Scrapers & Crawlers</div>
+            <span class="flow-arrow">→</span>
+          </div>
+          <div class="flow-item">
+            <div class="flow-box">Data warehouse</div>
+            <span class="flow-arrow">→</span>
+          </div>
+          <div class="flow-item">
+            <div class="flow-box">AI Agents</div>
+            <span class="flow-arrow">→</span>
+          </div>
+          <div class="flow-item">
+            <div class="flow-box">API layer</div>
+            <span class="flow-arrow">→</span>
+          </div>
+          <div class="flow-item">
+            <div class="flow-box">Frontend Web App</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section at bottom of solution? Maybe inside architecture or after. -->
+    <section id="cta" style="background:rgba(2, 6, 23, 0.95); border-top:1px solid var(--border);">
+      <div class="container" style="padding:2rem 0; text-align:center;">
+        <h2 style="font-size:1.4rem; margin-bottom:0.4rem;">
+          Join our waitlist
+        </h2>
+        <p style="max-width:34rem; margin:0 auto 1.3rem; font-size:0.9rem; color:var(--text-muted);">
+          Ready to get first access? Sign up now and we’ll notify you when our
+          platform launches. Be among the first to find your dream role.
+        </p>
+        <a href="#hero" class="btn">Join now</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2025 HireHub. Connecting talent to opportunity with AI.</p>
+      <p style="margin-top:0.3rem;">Built with ♥ in Uzbekistan</p>
+    </div>
+  </footer>
+</body>
+</html>
