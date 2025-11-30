@@ -1,829 +1,523 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HireHub – AI‑powered IT job platform</title>
-  <style>
-    /* Root variables for colours and sizes */
-    :root {
-      /* Updated colour palette */
-      --bg: #0f0a24;
-      --bg-gradient-start: #311b92; /* deep purple */
-      --bg-gradient-end: #09011a;   /* very dark purple */
-      --primary: #8b5cf6;           /* vibrant purple accent */
-      --secondary: #ec4899;         /* complementary pink accent */
-      --accent-soft: rgba(99, 102, 241, 0.12);
-      --text: #e2e8f0;
-      --text-muted: #94a3b8;
-      --border: rgba(148, 163, 184, 0.35);
-      --radius-lg: 18px;
-      --radius-xl: 24px;
-      --max-width: 1100px;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-      background: radial-gradient(circle at top left, var(--bg-gradient-start), var(--bg-gradient-end));
-      color: var(--text);
-      line-height: 1.6;
-      scroll-behavior: smooth;
-    }
-
-    img {
-      max-width: 100%;
-      display: block;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    /* Layout utilities */
-    .container {
-      width: 100%;
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    section {
-      padding: 4rem 0;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(16px);
-      background: rgba(3, 7, 18, 0.8);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 0;
-    }
-
-    .logo {
-      font-size: 1.25rem;
-      font-weight: 600;
-      letter-spacing: 0.05em;
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .logo-mark {
-      width: 28px;
-      height: 28px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.5);
-    }
-
-    .nav-links {
-      display: none;
-      gap: 1.5rem;
-      font-size: 0.9rem;
-      text-transform: uppercase;
-    }
-
-    .nav-links a {
-      position: relative;
-      padding-bottom: 0.2rem;
-      color: var(--text-muted);
-    }
-
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      width: 0;
-      height: 2px;
-      background: linear-gradient(to right, var(--primary), var(--secondary));
-      transition: width 0.2s ease-out;
-      border-radius: 999px;
-    }
-
-    .nav-links a:hover {
-      color: var(--text);
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    .nav-cta {
-      display: none;
-    }
-
-    @media (min-width: 768px) {
-      .nav-links {
-        display: flex;
-      }
-      .nav-cta {
-        display: inline-flex;
-      }
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      padding: 0.5rem 1.2rem;
-      border-radius: 999px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      border: 1px solid transparent;
-      background: var(--primary);
-      color: #f8fafc;
-      cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
-    }
-
-    .btn:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 12px 32px rgba(99, 102, 241, 0.55);
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--text);
-      border: 1px solid var(--border);
-    }
-
-    .btn-outline:hover {
-      background: rgba(78, 70, 229, 0.1);
-    }
-
-    /* Hero section */
-    #hero {
-      padding-top: 5rem;
-    }
-
-    .hero-grid {
-      display: grid;
-      gap: 3rem;
-      align-items: center;
-    }
-
-    @media (min-width: 920px) {
-      .hero-grid {
-        grid-template-columns: 1.1fr 1fr;
-      }
-    }
-
-    .hero-title {
-      font-size: 2.4rem;
-      line-height: 1.2;
-      margin: 0 0 0.8rem;
-      letter-spacing: -0.02em;
-    }
-
-    .hero-title span {
-      background: linear-gradient(120deg, var(--primary), var(--secondary));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .hero-subtitle {
-      max-width: 34rem;
-      font-size: 1rem;
-      color: var(--text-muted);
-    }
-
-    .metrics {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: 1.4rem;
-      font-size: 0.85rem;
-    }
-
-    .metric-pill {
-      padding: 0.45rem 0.9rem;
-      border-radius: 999px;
-      border: 1px solid var(--border);
-      background: rgba(99, 102, 241, 0.15);
-      color: var(--text-muted);
-    }
-
-    .metric-pill strong {
-      color: var(--text);
-    }
-
-    .hero-image {
-      border-radius: var(--radius-xl);
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid var(--border);
-      box-shadow: 0 18px 40px rgba(2, 6, 23, 0.8);
-      padding: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.2rem;
-      position: relative;
-    }
-
-    .hero-image::after {
-      content: "";
-      position: absolute;
-      width: 140px;
-      height: 140px;
-      border-radius: 50%;
-      top: -50px;
-      right: -50px;
-      background: radial-gradient(circle at 30% 30%, var(--secondary), transparent);
-      opacity: 0.4;
-      filter: blur(4px);
-    }
-
-    /* Section headings */
-    .section-kicker {
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      margin-bottom: 0.35rem;
-    }
-
-    .section-heading {
-      font-size: 1.7rem;
-      margin-bottom: 0.8rem;
-      letter-spacing: -0.03em;
-    }
-
-    .section-lead {
-      max-width: 32rem;
-      font-size: 0.96rem;
-      color: var(--text-muted);
-    }
-
-    /* Problem & Solution cards */
-    .card-grid {
-      display: grid;
-      gap: 1.5rem;
-    }
-
-    @media (min-width: 860px) {
-      .card-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    .card {
-      background: rgba(15, 23, 42, 0.92);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-      padding: 1.2rem 1.3rem;
-      box-shadow: 0 10px 28px rgba(2, 6, 23, 0.6);
-      position: relative;
-    }
-
-    .card h3 {
-      margin: 0 0 0.4rem;
-      font-size: 1.05rem;
-    }
-
-    .card p {
-      margin: 0 0 0.6rem;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-
-    .card .metric {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.15em;
-      color: var(--text-muted);
-    }
-
-    /* Icon inside cards */
-    .card-icon {
-      font-size: 1.6rem;
-      width: 2.3rem;
-      height: 2.3rem;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      color: #f8fafc;
-      margin-bottom: 0.8rem;
-      box-shadow: 0 6px 18px rgba(79, 70, 229, 0.4);
-    }
-
-    /* Team section */
-    .team-grid {
-      display: grid;
-      gap: 1.2rem;
-      margin-top: 1.4rem;
-    }
-
-    @media (min-width: 900px) {
-      .team-grid {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-      }
-    }
-
-    .team-card {
-      padding: 1rem;
-      background: rgba(15, 23, 42, 0.92);
-      border: 1px solid var(--border);
-      border-radius: var(--radius-lg);
-    }
-
-    .team-role {
-      color: var(--text-muted);
-      font-size: 0.82rem;
-      margin-bottom: 0.4rem;
-    }
-
-    .skills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.3rem;
-      font-size: 0.74rem;
-      color: var(--text-muted);
-    }
-
-    .skills span {
-      padding: 0.2rem 0.5rem;
-      border-radius: 999px;
-      background: rgba(99, 102, 241, 0.18);
-      border: 1px solid rgba(99, 102, 241, 0.35);
-    }
-
-    /* Why us section */
-    #why {
-      background: linear-gradient(180deg, rgba(20, 31, 55, 0.95), rgba(12, 19, 36, 0.95));
-    }
-
-    .why-content {
-      display: grid;
-      gap: 1.5rem;
-    }
-
-    @media (min-width: 860px) {
-      .why-content {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    .why-text {
-      font-size: 0.94rem;
-      color: var(--text-muted);
-      line-height: 1.7;
-    }
-
-    .why-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .why-list li {
-      padding-left: 2rem;
-      position: relative;
-      margin-bottom: 1rem;
-      font-size: 0.88rem;
-      color: var(--text);
-    }
-
-    .why-list li::before {
-      content: "✔";
-      position: absolute;
-      left: 0;
-      top: 0;
-      color: var(--primary);
-      font-weight: bold;
-    }
-
-    /* Roadmap section */
-    #roadmap-section {
-      background: rgba(12, 19, 36, 0.95);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .roadmap-img {
-      margin-top: 1.5rem;
-      border-radius: var(--radius-lg);
-      overflow: hidden;
-      border: 1px solid var(--border);
-    }
-
-    /* Architecture section */
-    #architecture {
-      background: rgba(15, 23, 42, 0.9);
-      border-top: 1px solid var(--border);
-    }
-
-    .architecture-flow {
-      margin-top: 1.4rem;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 1.2rem;
-      font-size: 0.95rem;
-    }
-
-    @media (min-width: 700px) {
-      .architecture-flow {
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-      }
-    }
-
-    .flow-item {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .flow-box {
-      padding: 0.6rem 0.9rem;
-      border-radius: 12px;
-      background: rgba(30, 41, 59, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      font-size: 0.85rem;
-      white-space: nowrap;
-    }
-
-    .flow-arrow {
-      font-size: 1.4rem;
-      color: var(--primary);
-    }
-
-    /* Footer */
-    footer {
-      padding: 2rem 0 3rem;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      text-align: center;
-      border-top: 1px solid var(--border);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GlobalCareer AI | Bridge to the World</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            500: '#0ea5e9', // Sky blue
+                            600: '#0284c7',
+                            900: '#0c4a6e',
+                        },
+                        accent: {
+                            500: '#8b5cf6', // Violet
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom Animations */
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-200 { animation-delay: 0.2s; }
+        .delay-300 { animation-delay: 0.3s; }
+
+        /* Flow line animation for architecture */
+        .flow-line {
+            background: linear-gradient(90deg, #0ea5e9 50%, #e2e8f0 50%);
+            background-size: 200% 100%;
+            animation: flowAnimation 2s linear infinite;
+        }
+        @keyframes flowAnimation {
+            0% { background-position: 100% 0; }
+            100% { background-position: -100% 0; }
+        }
+    </style>
 </head>
-<body>
-  <!-- Header / Navigation -->
-  <header>
-    <div class="container nav">
-      <a href="#hero" class="logo">
-        <div class="logo-mark"></div>
-        HireHub
-      </a>
-      <nav class="nav-links">
-        <a href="#problem">Problem</a>
-        <a href="#solution">Solution</a>
-        <a href="#team">Team</a>
-        <a href="#why">Why us</a>
-        <a href="#roadmap-section">Roadmap</a>
-        <a href="#architecture">Architecture</a>
-      </nav>
-      <a href="#cta" class="btn nav-cta">Join waitlist</a>
-    </div>
-  </header>
+<body class="font-sans text-slate-800 bg-slate-50 antialiased">
 
-  <main>
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Service Name (Top Left) -->
+                <div class="flex-shrink-0 flex items-center gap-2">
+                    <i data-lucide="globe-2" class="h-8 w-8 text-brand-600"></i>
+                    <span class="font-bold text-xl tracking-tight text-slate-900">GlobalCareer AI</span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#problem" class="text-slate-600 hover:text-brand-600 transition font-medium">The Problem</a>
+                    <a href="#solution" class="text-slate-600 hover:text-brand-600 transition font-medium">Solution</a>
+                    <a href="#architecture" class="text-slate-600 hover:text-brand-600 transition font-medium">Tech</a>
+                    <a href="#team" class="text-slate-600 hover:text-brand-600 transition font-medium">Team</a>
+                    <a href="#roadmap" class="text-slate-600 hover:text-brand-600 transition font-medium">Roadmap</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="text-slate-600 hover:text-slate-900 focus:outline-none">
+                        <i data-lucide="menu" class="h-6 w-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#problem" class="block px-3 py-2 text-slate-600 hover:text-brand-600">The Problem</a>
+                <a href="#solution" class="block px-3 py-2 text-slate-600 hover:text-brand-600">Solution</a>
+                <a href="#architecture" class="block px-3 py-2 text-slate-600 hover:text-brand-600">Architecture</a>
+                <a href="#team" class="block px-3 py-2 text-slate-600 hover:text-brand-600">Team</a>
+            </div>
+        </div>
+    </nav>
+
     <!-- Hero Section -->
-    <section id="hero">
-      <div class="container hero-grid">
-        <div>
-          <h1 class="hero-title">
-            Unlock your IT career<br>
-            with <span>AI‑powered matching</span>
-          </h1>
-          <p class="hero-subtitle">
-            HireHub connects talented graduates and developers to the right
-            opportunities by scanning thousands of job platforms around the world.
-          </p>
-          <div class="metrics">
-            <span class="metric-pill"><strong>10+</strong> sources aggregated</span>
-            <span class="metric-pill"><strong>AI agent</strong> guided</span>
-            <span class="metric-pill"><strong>&lt;5 min</strong> to find a match</span>
-          </div>
-          <div class="metrics" style="margin-top:1.2rem;">
-            <a href="#cta" class="btn">Get early access</a>
-            <a href="#problem" class="btn btn-outline">Learn more</a>
-          </div>
+    <header class="relative bg-gradient-to-br from-brand-900 via-brand-800 to-slate-900 pt-32 pb-24 lg:pt-48 lg:pb-32 overflow-hidden">
+        <!-- Abstract Background Shapes -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden opacity-20">
+            <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-brand-500 blur-3xl"></div>
+            <div class="absolute top-1/2 left-1/4 w-72 h-72 rounded-full bg-accent-500 blur-3xl"></div>
         </div>
-        <div>
-          <div class="hero-image">
-            <h3 style="margin:0; font-size:1rem; color:var(--text-muted);">Sample insight</h3>
-            <p style="margin:0; font-size:1.3rem; font-weight:600;">Top skill demand: Python, SQL, React</p>
-            <p style="margin:0; font-size:0.85rem; color:var(--text-muted);">Data based on 100k jobs scraped worldwide</p>
-            <div style="display:flex; gap:0.6rem; margin-top:0.8rem; flex-wrap:wrap;">
-              <div style="flex:1 1 45%; background:rgba(30, 41, 59, 0.9); border:1px solid var(--border); border-radius:12px; padding:0.6rem;">
-                <div style="font-size:0.75rem; color:var(--text-muted);">Most wanted role</div>
-                <div style="font-size:0.95rem; font-weight:500;">Full‑stack developer</div>
-              </div>
-              <div style="flex:1 1 45%; background:rgba(30, 41, 59, 0.9); border:1px solid var(--border); border-radius:12px; padding:0.6rem;">
-                <div style="font-size:0.75rem; color:var(--text-muted);">Avg. salary increase</div>
-                <div style="font-size:0.95rem; font-weight:500;">+20%</div>
-              </div>
+
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="fade-in-up">
+                <span class="inline-block py-1 px-3 rounded-full bg-brand-500/20 text-brand-200 text-sm font-semibold mb-6 border border-brand-500/30">
+                    Connecting Uzbekistan to the World
+                </span>
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-6">
+                    Unlock Global IT Opportunities with <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-accent-500">AI Intelligence</span>
+                </h1>
+                <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-300">
+                    We bridge the gap between talented graduates and the global market. Aggregate vacancies, optimize your CV, and get hired internationally.
+                </p>
+                <div class="mt-10 flex justify-center gap-4">
+                    <a href="#solution" class="px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-brand-600 hover:bg-brand-700 md:text-lg transition shadow-lg shadow-brand-500/30">
+                        Explore Solution
+                    </a>
+                    <a href="#team" class="px-8 py-3 border border-slate-600 text-base font-medium rounded-md text-slate-200 hover:bg-slate-800 md:text-lg transition">
+                        Meet the Team
+                    </a>
+                </div>
             </div>
-            <p style="margin:0; font-size:0.7rem; margin-top:0.7rem; color:var(--text-muted);">AI insights updated daily</p>
-          </div>
         </div>
-      </div>
-    </section>
+    </header>
 
-    <!-- Problem Section -->
-    <section id="problem">
-      <div class="container">
-        <div class="section-kicker">The problem</div>
-        <h2 class="section-heading">Untapped talent meets limited exposure</h2>
-        <p class="section-lead">
-          Thousands of brilliant graduates and junior developers are ready to
-          contribute, but many don’t know where to look. In markets like
-          Uzbekistan, most candidates rely on a single platform, leaving
-          countless opportunities undiscovered while competition soars for
-          the few visible listings.
-        </p>
-        <div class="card-grid" style="margin-top:1.6rem;">
-          <!-- Overloaded boards -->
-          <div class="card">
-            <div class="card-icon">📥</div>
-            <h3>Overloaded boards</h3>
-            <p>
-              Popular job boards are swamped — a handful of roles attract
-              thousands of applicants, making it hard for both candidates and
-              employers to stand out.
-            </p>
-            <div class="metric">10× candidates per listing</div>
-          </div>
-          <!-- Hidden opportunities -->
-          <div class="card">
-            <div class="card-icon">🔎</div>
-            <h3>Hidden opportunities</h3>
-            <p>
-              Many valuable vacancies are posted on niche or regional sites
-              unknown to most job seekers. Without the right tools they remain
-              invisible.
-            </p>
-            <div class="metric">Missed global postings</div>
-          </div>
-          <!-- Scattered sources -->
-          <div class="card">
-            <div class="card-icon">🌐</div>
-            <h3>Scattered sources</h3>
-            <p>
-              With hundreds of job boards, company pages and community forums,
-              sifting through everything manually becomes overwhelming and
-              inefficient.
-            </p>
-            <div class="metric">100+ sites to comb</div>
-          </div>
-          <!-- Skills mismatch -->
-          <div class="card">
-            <div class="card-icon">⚠️</div>
-            <h3>Skills mismatch</h3>
-            <p>
-              Generic CVs and proposals often don’t align with what global
-              employers expect, leading to low interview rates despite strong
-              potential.
-            </p>
-            <div class="metric">Low interview conversion</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Solution Section -->
-    <section id="solution">
-      <div class="container">
-        <div class="section-kicker">Our solution</div>
-        <h2 class="section-heading">A single AI‑powered gateway to global IT jobs</h2>
-        <p class="section-lead">
-          HireHub crawls and aggregates vacancies from job boards, company
-          websites and freelance platforms around the world. Our AI agent
-          matches your skills, writes tailored CVs and proposals, and guides you
-          through the entire application process.
-        </p>
-        <div class="card-grid" style="margin-top:1.6rem;">
-          <!-- Omni‑source aggregator -->
-          <div class="card">
-            <div class="card-icon">🌍</div>
-            <h3>Omni‑source aggregator</h3>
-            <p>
-              Hundreds of job boards, company career pages and freelance
-              platforms are unified into one curated feed, so you never miss a
-              potential opportunity.
-            </p>
-            <div class="metric">Global coverage</div>
-          </div>
-          <!-- AI matching engine -->
-          <div class="card">
-            <div class="card-icon">🤖</div>
-            <h3>AI matching engine</h3>
-            <p>
-              Sophisticated models analyse your profile and instantly surface
-              roles that align with your skills, experience and aspirations.
-            </p>
-            <div class="metric">Personalised matches</div>
-          </div>
-          <!-- Application assistant -->
-          <div class="card">
-            <div class="card-icon">✍️</div>
-            <h3>Application assistant</h3>
-            <p>
-              Our agent helps craft compelling CVs and cover letters
-              tailored to each job, ensuring your application stands out.
-            </p>
-            <div class="metric">Polished applications</div>
-          </div>
-          <!-- Global bridge -->
-          <div class="card">
-            <div class="card-icon">🚀</div>
-            <h3>Global bridge</h3>
-            <p>
-              By connecting Uzbek professionals with employers worldwide, we
-              shine a light on regional talent and open up new markets.
-            </p>
-            <div class="metric">Uzbek talent recognized</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Team Section -->
-    <section id="team">
-      <div class="container">
-        <div class="section-kicker">Team</div>
-        <h2 class="section-heading">Meet the builders</h2>
-        <p class="section-lead">
-          Our diverse team combines data, AI and web expertise to create a
-          seamless job‑matching platform.
-        </p>
-        <div class="team-grid">
-          <div class="team-card">
-            <h3>Data Engineer</h3>
-            <div class="team-role">Data pipelines & warehousing</div>
-            <p style="font-size:0.85rem; color:var(--text-muted);">
-              5+ years creating scalable ETL processes, scraping, automation,
-              and integrating AI with global datasets.
-            </p>
-            <div class="skills">
-              <span>SQL</span>
-              <span>Python</span>
-              <span>Snowflake</span>
-              <span>Azure</span>
-              <span>Power BI</span>
+    <!-- 1. The Problem Section -->
+    <section id="problem" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-base text-brand-600 font-semibold tracking-wide uppercase">The Challenge</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+                    Talent Overflow, Opportunity Bottleneck
+                </p>
             </div>
-          </div>
-          <div class="team-card">
-            <h3>Frontend Developer</h3>
-            <div class="team-role">Web & UX</div>
-            <p style="font-size:0.85rem; color:var(--text-muted);">
-              Crafts intuitive interfaces that make complex workflows feel
-              effortless for job seekers.
-            </p>
-            <div class="skills">
-              <span>JavaScript</span>
-              <span>React</span>
-              <span>TypeScript</span>
-              <span>Python</span>
-              <span>SQL</span>
+
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="relative">
+                    <div class="absolute inset-0 bg-gradient-to-r from-red-100 to-orange-100 rounded-2xl transform rotate-3"></div>
+                    <div class="relative bg-white p-8 rounded-2xl shadow-xl border border-slate-100">
+                        <div class="flex items-center mb-6">
+                            <div class="p-3 bg-red-100 rounded-lg text-red-600 mr-4">
+                                <i data-lucide="alert-triangle" class="w-6 h-6"></i>
+                            </div>
+                            <h3 class="text-xl font-bold text-slate-900">The Local Limitation</h3>
+                        </div>
+                        <p class="text-slate-600 mb-6">
+                            In Uzbekistan, talented IT graduates rely heavily on limited platforms like HeadHunter and LinkedIn.
+                        </p>
+                        <div class="flex justify-between items-end border-b border-slate-200 pb-4 mb-4">
+                            <span class="text-sm font-medium text-slate-500">Available Local Jobs</span>
+                            <span class="text-2xl font-bold text-slate-800">~100</span>
+                        </div>
+                        <div class="flex justify-between items-end">
+                            <span class="text-sm font-medium text-slate-500">Qualified Applicants</span>
+                            <span class="text-2xl font-bold text-red-600">~1,000+</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-4 italic">High competition for limited visibility.</p>
+                    </div>
+                </div>
+                
+                <div class="space-y-6">
+                    <p class="text-lg text-slate-600 leading-relaxed">
+                        There is a massive disconnect. Thousands of skilled graduates enter the market, but fight over a small pool of locally advertised vacancies. 
+                    </p>
+                    <p class="text-lg text-slate-600 leading-relaxed">
+                        Meanwhile, the global market is starving for talent, but our specialists are invisible to them, and foreign platforms are fragmented and hard to navigate manually.
+                    </p>
+                    <ul class="space-y-4 mt-4">
+                        <li class="flex items-start">
+                            <i data-lucide="x-circle" class="w-6 h-6 text-red-500 mr-2 flex-shrink-0"></i>
+                            <span class="text-slate-700">Limited exposure to international companies.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i data-lucide="x-circle" class="w-6 h-6 text-red-500 mr-2 flex-shrink-0"></i>
+                            <span class="text-slate-700">Wasted potential of skilled youth.</span>
+                        </li>
+                    </ul>
+                </div>
             </div>
-          </div>
-          <div class="team-card">
-            <h3>Backend Developer</h3>
-            <div class="team-role">AI & ML</div>
-            <p style="font-size:0.85rem; color:var(--text-muted);">
-              Implements robust AI models, language agents and APIs that power
-              our intelligent matching.
-            </p>
-            <div class="skills">
-              <span>Python</span>
-              <span>SQL</span>
-              <span>NLP</span>
-              <span>AI modeling</span>
-              <span>LangGraph</span>
+        </div>
+    </section>
+
+    <!-- 2. The Solution Section -->
+    <section id="solution" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-base text-brand-600 font-semibold tracking-wide uppercase">Our Solution</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-slate-900 sm:text-4xl">
+                    AI-Driven Global Integration
+                </p>
+                <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-500">
+                    We don't just list jobs. We aggregate the world's opportunities and equip you with an AI agent to land them.
+                </p>
             </div>
-          </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white rounded-xl shadow-lg p-8 border border-slate-100 hover:shadow-xl transition duration-300">
+                    <div class="w-14 h-14 bg-brand-100 rounded-lg flex items-center justify-center text-brand-600 mb-6">
+                        <i data-lucide="globe" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Global Aggregation</h3>
+                    <p class="text-slate-600">
+                        We scrape and collect IT vacancies from specialized platforms worldwide, not just the local ones. Access the hidden market.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white rounded-xl shadow-lg p-8 border border-slate-100 hover:shadow-xl transition duration-300 transform md:-translate-y-4 border-t-4 border-t-brand-500">
+                    <div class="w-14 h-14 bg-accent-100 rounded-lg flex items-center justify-center text-accent-600 mb-6">
+                        <i data-lucide="bot" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">AI Agent Assistant</h3>
+                    <p class="text-slate-600">
+                        Our intelligent agent helps match you to the right job, drafts your CV, and writes tailored proposals to increase interview chances.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white rounded-xl shadow-lg p-8 border border-slate-100 hover:shadow-xl transition duration-300">
+                    <div class="w-14 h-14 bg-green-100 rounded-lg flex items-center justify-center text-green-600 mb-6">
+                        <i data-lucide="trending-up" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Market Expansion</h3>
+                    <p class="text-slate-600">
+                        By placing Uzbek talent in global companies, we boost employment and open the Uzbek market to international recognition.
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
-    <!-- Why us Section -->
-    <section id="why">
-      <div class="container">
-        <div class="section-kicker">Why us</div>
-        <h2 class="section-heading">Why our team can solve this</h2>
-        <div class="why-content">
-          <div class="why-text">
-            <p>
-              We’ve already built pipelines to scrape and analyse thousands of
-              vacancies worldwide and turned them into actionable insights. Our
-              past project produced a dashboard showing the most demanded
-              skills, tools, salary ranges and gaps in Uzbekistan’s IT
-              ecosystem. Educational institutions are using our analytics to
-              guide curriculum planning. This isn’t theory — it’s a continuation
-              of what we’ve proven.
-            </p>
-            <p>
-              Our Senior Data Engineer has over five years’ experience
-              designing ETL systems, AI integrations and automation for
-              globally distributed projects. Our AI Developer brings deep
-              expertise in LLM agents, retrieval‑augmented generation and
-              distributed systems, with a strong data engineering foundation.
-              Our Web Developer started in web, expanded into AI, and now
-              bridges the gap between UI and algorithmic complexity.
-            </p>
-          </div>
-          <ul class="why-list">
-            <li>Deep data & scraping know‑how</li>
-            <li>Proven AI and LLM expertise</li>
-            <li>Hands‑on with global job market analytics</li>
-            <li>Full‑stack web experience</li>
-          </ul>
+    <!-- 6. System Architecture (Moved up for flow) -->
+    <section id="architecture" class="py-20 bg-slate-900 text-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-base text-brand-400 font-semibold tracking-wide uppercase">Under the Hood</h2>
+                <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight sm:text-4xl">
+                    System Architecture
+                </p>
+            </div>
+
+            <!-- Architecture Flow Visualization -->
+            <div class="relative flex flex-col md:flex-row justify-between items-center gap-6 max-w-5xl mx-auto">
+                
+                <!-- Step 1 -->
+                <div class="flex flex-col items-center z-10 w-full md:w-48">
+                    <div class="w-20 h-20 bg-slate-800 border-2 border-brand-500 rounded-full flex items-center justify-center mb-4 shadow-[0_0_20px_rgba(14,165,233,0.3)]">
+                        <i data-lucide="database" class="w-10 h-10 text-brand-400"></i>
+                    </div>
+                    <h4 class="font-bold text-lg">Scraping</h4>
+                    <p class="text-sm text-slate-400 text-center">Job Platforms</p>
+                </div>
+
+                <!-- Arrow -->
+                <div class="hidden md:flex flex-1 h-1 bg-slate-700 items-center justify-center relative">
+                    <div class="absolute inset-0 flow-line opacity-50"></div>
+                    <i data-lucide="chevron-right" class="w-6 h-6 text-slate-500"></i>
+                </div>
+                <div class="md:hidden h-12 w-1 bg-slate-700 flex justify-center relative my-2">
+                     <i data-lucide="chevron-down" class="w-6 h-6 text-slate-500 absolute bottom-0"></i>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="flex flex-col items-center z-10 w-full md:w-48">
+                    <div class="w-20 h-20 bg-slate-800 border-2 border-brand-500 rounded-full flex items-center justify-center mb-4 shadow-[0_0_20px_rgba(14,165,233,0.3)]">
+                        <i data-lucide="server" class="w-10 h-10 text-brand-400"></i>
+                    </div>
+                    <h4 class="font-bold text-lg">Warehouse</h4>
+                    <p class="text-sm text-slate-400 text-center">Data Collection</p>
+                </div>
+
+                <!-- Arrow (Bidirectional for Agents) -->
+                <div class="hidden md:flex flex-1 h-1 bg-slate-700 items-center justify-center relative">
+                    <div class="absolute inset-0 flow-line opacity-50"></div>
+                    <i data-lucide="arrow-right-left" class="w-6 h-6 text-slate-500"></i>
+                </div>
+                 <div class="md:hidden h-12 w-1 bg-slate-700 flex justify-center relative my-2">
+                     <i data-lucide="arrow-up-down" class="w-6 h-6 text-slate-500 absolute bottom-0"></i>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="flex flex-col items-center z-10 w-full md:w-48">
+                    <div class="w-20 h-20 bg-slate-800 border-2 border-accent-500 rounded-full flex items-center justify-center mb-4 shadow-[0_0_20px_rgba(139,92,246,0.5)]">
+                        <i data-lucide="bot" class="w-10 h-10 text-accent-400"></i>
+                    </div>
+                    <h4 class="font-bold text-lg text-accent-300">AI Agents</h4>
+                    <p class="text-sm text-slate-400 text-center">LLM / NLP</p>
+                </div>
+
+                <!-- Arrow -->
+                <div class="hidden md:flex flex-1 h-1 bg-slate-700 items-center justify-center relative">
+                    <div class="absolute inset-0 flow-line opacity-50"></div>
+                    <i data-lucide="chevron-right" class="w-6 h-6 text-slate-500"></i>
+                </div>
+                 <div class="md:hidden h-12 w-1 bg-slate-700 flex justify-center relative my-2">
+                     <i data-lucide="chevron-down" class="w-6 h-6 text-slate-500 absolute bottom-0"></i>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="flex flex-col items-center z-10 w-full md:w-48">
+                    <div class="w-20 h-20 bg-slate-800 border-2 border-white rounded-full flex items-center justify-center mb-4">
+                        <i data-lucide="layout" class="w-10 h-10 text-white"></i>
+                    </div>
+                    <h4 class="font-bold text-lg">Web App</h4>
+                    <p class="text-sm text-slate-400 text-center">Frontend</p>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
-    <!-- Roadmap Section -->
-    <section id="roadmap-section">
-      <div class="container">
-        <div class="section-kicker">Roadmap</div>
-        <h2 class="section-heading">Where we’re headed</h2>
-        <p class="section-lead">
-          From prototype to scalable platform — here’s a high‑level view of our
-          journey. The detailed roadmap graphic prepared by our team will be
-          placed here.
-        </p>
-        <div class="roadmap-img">
-          <!-- Placeholder image for roadmap -->
-          <img src="roadmap.png" alt="Roadmap graphic placeholder" style="width:100%; height:auto;">
+    <!-- 4. Why Our Team Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:flex lg:items-center lg:gap-16">
+                <div class="lg:w-1/2 mb-10 lg:mb-0">
+                    <h2 class="text-3xl font-extrabold text-slate-900 mb-6">Why We Can Solve This</h2>
+                    <p class="text-lg text-slate-600 mb-6">
+                        We aren't just theorists. We are the team behind the <strong>MAAB Innovation campaign</strong>.
+                    </p>
+                    <div class="bg-brand-50 border-l-4 border-brand-500 p-6 rounded-r-lg mb-6">
+                        <p class="text-slate-700 italic">
+                            "We scraped global IT vacancies, built a dashboard, and revealed the exact skills the world demands versus what Uzbekistan lacks. We have the data, and we have the history."
+                        </p>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex items-center">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mr-3"></i>
+                            <span class="text-slate-700">Proven track record in Global Data Analysis</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mr-3"></i>
+                            <span class="text-slate-700">Used by institutions to guide training programs</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i data-lucide="check-circle-2" class="w-5 h-5 text-green-500 mr-3"></i>
+                            <span class="text-slate-700">Deep expertise in LLMs, RAG, and Pipelines</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="lg:w-1/2">
+                    <div class="bg-gradient-to-tr from-slate-100 to-slate-200 rounded-2xl p-8 shadow-inner">
+                        <div class="space-y-6">
+                            <!-- Experience Badge 1 -->
+                            <div class="flex items-start">
+                                <div class="bg-white p-3 rounded shadow-sm mr-4">
+                                    <i data-lucide="database-zap" class="w-6 h-6 text-brand-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900">Senior Data Engineer</h4>
+                                    <p class="text-sm text-slate-600">5+ years in ETL, Pipelines, Automation & Modeling in global projects.</p>
+                                </div>
+                            </div>
+                            <!-- Experience Badge 2 -->
+                            <div class="flex items-start">
+                                <div class="bg-white p-3 rounded shadow-sm mr-4">
+                                    <i data-lucide="brain-circuit" class="w-6 h-6 text-accent-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900">AI Specialist</h4>
+                                    <p class="text-sm text-slate-600">Expert in Agents, LangChain, RAG, and Distributed Systems.</p>
+                                </div>
+                            </div>
+                            <!-- Experience Badge 3 -->
+                            <div class="flex items-start">
+                                <div class="bg-white p-3 rounded shadow-sm mr-4">
+                                    <i data-lucide="code-2" class="w-6 h-6 text-indigo-600"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-slate-900">The "Strong Mutant" Web Dev</h4>
+                                    <p class="text-sm text-slate-600">A hybrid developer bridging complex web systems with our AI backend.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
-    <!-- Architecture Section -->
-    <section id="architecture">
-      <div class="container">
-        <div class="section-kicker">System architecture</div>
-        <h2 class="section-heading">Technologies used</h2>
-        <p class="section-lead">
-          A modern stack orchestrates scraping, storage, AI and the user
-          experience. We’ve simplified the flow below.
-        </p>
-        <div class="architecture-flow">
-          <div class="flow-item">
-            <div class="flow-box">Scrapers & Crawlers</div>
-            <span class="flow-arrow">→</span>
-          </div>
-          <div class="flow-item">
-            <div class="flow-box">Data warehouse</div>
-            <span class="flow-arrow">→</span>
-          </div>
-          <div class="flow-item">
-            <div class="flow-box">AI Agents</div>
-            <span class="flow-arrow">→</span>
-          </div>
-          <div class="flow-item">
-            <div class="flow-box">API layer</div>
-            <span class="flow-arrow">→</span>
-          </div>
-          <div class="flow-item">
-            <div class="flow-box">Frontend Web App</div>
-          </div>
+    <!-- 3. Team Members Section -->
+    <section id="team" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-extrabold text-slate-900">Meet The Squad</h2>
+                <p class="mt-2 text-slate-500">The perfect mix of Data, AI, and Frontend mastery.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Member 1 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg border border-slate-100 hover:-translate-y-2 transition duration-300">
+                    <div class="h-32 bg-brand-600 flex items-center justify-center">
+                         <i data-lucide="hard-drive" class="w-16 h-16 text-white opacity-80"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-900">Team Member 1</h3>
+                        <p class="text-brand-600 font-medium mb-4">Data Engineer</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">SQL</span>
+                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">Python</span>
+                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">Azure (ADF/Synapse)</span>
+                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">Snowflake</span>
+                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">Fabric</span>
+                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">AWS</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Member 2 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg border border-slate-100 hover:-translate-y-2 transition duration-300">
+                    <div class="h-32 bg-indigo-600 flex items-center justify-center">
+                        <i data-lucide="monitor" class="w-16 h-16 text-white opacity-80"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-900">Team Member 2</h3>
+                        <p class="text-indigo-600 font-medium mb-4">Frontend Developer</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">React</span>
+                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">Typescript</span>
+                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">Javascript</span>
+                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">Python</span>
+                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">C++</span>
+                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">Power BI</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Member 3 -->
+                <div class="bg-white rounded-xl overflow-hidden shadow-lg border border-slate-100 hover:-translate-y-2 transition duration-300">
+                    <div class="h-32 bg-accent-600 flex items-center justify-center">
+                        <i data-lucide="cpu" class="w-16 h-16 text-white opacity-80"></i>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-900">Team Member 3</h3>
+                        <p class="text-accent-600 font-medium mb-4">Backend & AI</p>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">Python</span>
+                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">AI Modeling</span>
+                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">NLP</span>
+                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">Langgraph</span>
+                            <span class="px-2 py-1 bg-slate-100 text-xs text-slate-600 rounded">SQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </section>
 
-    <!-- CTA Section at bottom of solution? Maybe inside architecture or after. -->
-    <section id="cta" style="background:rgba(2, 6, 23, 0.95); border-top:1px solid var(--border);">
-      <div class="container" style="padding:2rem 0; text-align:center;">
-        <h2 style="font-size:1.4rem; margin-bottom:0.4rem;">
-          Join our waitlist
-        </h2>
-        <p style="max-width:34rem; margin:0 auto 1.3rem; font-size:0.9rem; color:var(--text-muted);">
-          Ready to get first access? Sign up now and we’ll notify you when our
-          platform launches. Be among the first to find your dream role.
-        </p>
-        <a href="#hero" class="btn">Join now</a>
-      </div>
+    <!-- 5. Roadmap Section -->
+    <section id="roadmap" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl font-extrabold text-slate-900 mb-10">Project Roadmap</h2>
+            
+            <!-- Roadmap Placeholder -->
+            <div class="w-full max-w-4xl mx-auto border-2 border-dashed border-slate-300 rounded-2xl bg-slate-50 min-h-[400px] flex flex-col items-center justify-center p-10">
+                
+                <!-- IF YOU HAVE AN IMAGE, REPLACE THIS SVG/DIV WITH: <img src="your-roadmap-image.png" class="w-full h-auto rounded-lg" alt="Roadmap"> -->
+                
+                <i data-lucide="map" class="w-20 h-20 text-slate-300 mb-4"></i>
+                <h3 class="text-xl font-semibold text-slate-600">Roadmap Image Placement</h3>
+                <p class="text-slate-500 mt-2">Place your detailed project roadmap image here.</p>
+                <div class="mt-8 flex gap-4 text-left max-w-lg mx-auto">
+                    <div class="flex-1 p-4 bg-white rounded shadow-sm">
+                        <span class="block text-brand-600 font-bold text-xs uppercase tracking-wide">Phase 1</span>
+                        <span class="font-medium text-slate-800">Scraping & Data Warehouse</span>
+                    </div>
+                    <div class="flex-1 p-4 bg-white rounded shadow-sm">
+                        <span class="block text-brand-600 font-bold text-xs uppercase tracking-wide">Phase 2</span>
+                        <span class="font-medium text-slate-800">AI Agent Development</span>
+                    </div>
+                    <div class="flex-1 p-4 bg-white rounded shadow-sm">
+                        <span class="block text-brand-600 font-bold text-xs uppercase tracking-wide">Phase 3</span>
+                        <span class="font-medium text-slate-800">Platform Launch</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
-  </main>
 
-  <footer>
-    <div class="container">
-      <p>© 2025 HireHub. Connecting talent to opportunity with AI.</p>
-      <p style="margin-top:0.3rem;">Built with ♥ in Uzbekistan</p>
-    </div>
-  </footer>
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-300 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <div class="flex items-center gap-2">
+                        <i data-lucide="globe-2" class="h-6 w-6 text-brand-500"></i>
+                        <span class="font-bold text-lg text-white">GlobalCareer AI</span>
+                    </div>
+                    <p class="text-sm mt-2 text-slate-400">Opening borders for Uzbek Talent.</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-white transition"><i data-lucide="github" class="w-5 h-5"></i></a>
+                    <a href="#" class="hover:text-white transition"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                    <a href="#" class="hover:text-white transition"><i data-lucide="mail" class="w-5 h-5"></i></a>
+                </div>
+            </div>
+            <div class="border-t border-slate-800 mt-8 pt-8 text-center text-sm text-slate-500">
+                &copy; 2024 GlobalCareer AI Project. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Initialize Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
 </body>
 </html>
+
+
