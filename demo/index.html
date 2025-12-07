@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="uz" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Demo – AI500</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          colors: {
+            brand: {
+              500: '#22c55e',
+              600: '#16a34a',
+            },
+          },
+        },
+      },
+    }
+  </script>
+</head>
+<body class="font-sans bg-slate-950 text-slate-50 min-h-screen">
+  <div class="max-w-4xl mx-auto px-4 py-8 md:py-12">
+    <!-- Back link -->
+    <a href="/" class="inline-flex items-center text-sm text-slate-300 hover:text-white mb-6">
+      <span class="mr-1">←</span> Asosiy sahifaga qaytish
+    </a>
+
+    <h1 class="text-3xl md:text-4xl font-extrabold mb-6 text-emerald-400">
+      Demo / AI500 1-vazifa
+    </h1>
+
+    <!-- 1. Demo yozuvi -->
+    <section class="mb-10">
+      <h2 class="text-xl font-bold mb-3">1. Demo yozuvi (majburiy)</h2>
+      <p class="text-sm text-slate-300 mb-4">
+        Quyidagi video ilovaning asosiy funksiyalari va qanday ishlashini ko‘rsatadi.
+      </p>
+
+      <!-- ✅ YouTube video -->
+      <div class="aspect-video rounded-xl overflow-hidden border border-slate-800 bg-black">
+        <iframe
+          class="w-full h-full"
+          src="https://www.youtube.com/embed/XXXXXXXXXXX"
+          title="AI500 demo"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <!-- ❗ If you prefer Google Drive, comment the YouTube iframe above
+           and use this instead (change FILE_ID): -->
+      <!--
+      <div class="aspect-video rounded-xl overflow-hidden border border-slate-800 bg-black mt-4">
+        <iframe
+          class="w-full h-full"
+          src="https://drive.google.com/file/d/FILE_ID/preview"
+          allow="autoplay"
+        ></iframe>
+      </div>
+      -->
+    </section>
+
+    <!-- 2. Tavsif -->
+    <section class="mb-10">
+      <h2 class="text-xl font-bold mb-3">2. Tavsif (majburiy)</h2>
+      <ul class="list-disc pl-5 space-y-2 text-sm text-slate-200">
+        <li>Videoda nimalar ko‘rsatilgani (user flow, asosiy ekranlar).</li>
+        <li>Ko‘rsatilgan yechim qaysi muammoni hal qilishi.</li>
+        <li>Ishlatilgan texnologiyalar, stack va AI qismlari.</li>
+        <li>Loyiha holati (Prototype / MVP / Launched) va keyingi qadamlar.</li>
+      </ul>
+    </section>
+
+    <!-- 3. Ishlayotgan ilovaga havola -->
+    <section class="mb-10">
+      <h2 class="text-xl font-bold mb-3">3. Ishlayotgan ilovaga havola (ixtiyoriy)</h2>
+      <p class="text-sm text-slate-200 mb-3">
+        Agar deploy qilingan versiyasi bo‘lsa, shu yerda live havola bo‘ladi.
+      </p>
+      <a href="#"
+         class="inline-flex items-center px-4 py-2 rounded-lg bg-brand-600 hover:bg-brand-500 text-sm font-medium">
+        Live ilovaga o‘tish
+      </a>
+      <p class="text-xs text-slate-500 mt-2">
+        (Agar hali live bo‘lmasa, bu qismni oddiy matn qilib qoldirishingiz ham mumkin.)
+      </p>
+    </section>
+
+  </div>
+</body>
+</html>
